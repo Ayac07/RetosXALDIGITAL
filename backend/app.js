@@ -68,5 +68,9 @@ async function answerON(){
  
 //Asigna funciones a variables para exportarlas y poder usarlas posteriormente
 var aYN = answersYN(), ayOWN=answerOwners(), 
-    lVC= lowestViewCount(),aON= answerON();
-module.exports= {aYN,ayOWN,lVC,aON};
+    lVC= lowestViewCount(),aON= answerON(),
+    query1= "SELECT TOP 1 COUNT(id_MOVIMIENTO) AS MOVIMIENTOS, v.ID_AEROPUERTO, A.NOMBRE_AEROPUERTO  FROM vuelos v INNER JOIN aeropuertos A ON a.ID_AEROPUERTO = v.ID_AEROPUERTO GROUP BY DIA,v.id_aeropuerto,A.NOMBRE_AEROPUERTO ORDER BY COUNT(id_MOVIMIENTO) desc ;";
+    query2= "SELECT TOP 1 COUNT(V.ID_AEROLINEA) AS VUELOS,A.NOMBRE_AEROLINEA  FROM aerolineas A INNER JOIN vuelos V ON A.ID_AEROLINEA=V.ID_AEROLINEA WHERE YEAR(DIA)='2021' GROUP BY YEAR(DIA),A.NOMBRE_AEROLINEA ORDER BY COUNT(V.ID_AEROLINEA) desc  ;",
+    query3 = " SELECT dia FROM vuelos GROUP BY dia HAVING COUNT(ID_MOVIMIENTO)=(SELECT MAX(CONTEO) FROM (SELECT COUNT(ID_MOVIMIENTO) AS CONTEO,DIA FROM vuelos GROUP BY DAY(DIA),DIA) AS V);",
+    query4 = "SELECT A.NOMBRE_AEROLINEA FROM aerolineas A INNER JOIN VUELOS V on A.ID_AEROLINEA = V.ID_AEROLINEA GROUP BY V.ID_AEROLINEA,A.NOMBRE_AEROLINEA HAVING COUNT(V.ID_MOVIMIENTO)>2;";
+module.exports= {aYN,ayOWN,lVC,aON,query1,query2,query3,query4};

@@ -12,6 +12,10 @@ app.get('/', function(req, res) {
     let resp2 = data.ayOWN;
     let resp3 = data.lVC;
     let resp4 = data.aON;
+    let resp5 = data.query1;
+    let resp6 = data.query2;
+    let resp7 = data.query3;
+    let resp8 = data.query4;
     Promise.all([ //Array de promise, manda la informacion una vez que todas se cumplen
         resp1, resp2,resp3,resp4
     ]).then(responses => {
@@ -26,6 +30,11 @@ app.get('/', function(req, res) {
             respuesta2: respuestas[1],
             respuesta3: respuestas[2],
             respuesta4: respuestas[3],
+            respuesta5: resp5,
+            respuesta6: resp6,
+            respuesta7: resp7,
+            respuesta8: resp8,
+            
         });
        
       });
