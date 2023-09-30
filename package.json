@@ -4,7 +4,7 @@
     "express": "^4.17.2",
     "faker": "^5.5.3",
     "node-fetch": "^2.6.6",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.22"
   },
   "name": "reto-xd",
   "version": "1.0.0",
